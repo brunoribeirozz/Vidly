@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\SerieController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class EmailVerificationNotificationSerieController extends SerieController
+class EmailVerificationNotificationSerieController extends Controller
 {
     /**
      * Send a new email verification notification.

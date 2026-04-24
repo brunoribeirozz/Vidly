@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@theme {
+    --color-aurora-vibrant: #8B32F4;
+    --color-aurora-deep: #5320A6;
+    --color-aurora-light: #F3F3F3;
+    --color-aurora-dark: #0E0D0D;
+    --color-aurora-card: #18181B;
+}

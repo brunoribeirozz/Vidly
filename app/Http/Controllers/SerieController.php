@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 
-abstract class SerieController extends Controller
+class SerieController extends Controller
 {
     public function index()
     {
@@ -28,11 +28,11 @@ abstract class SerieController extends Controller
             // aqui traz apenas os dados validados pelo StoreSerieRequest, se for tudo certo, redireciona com uma mensagem de sucesso //
             Serie::create($request->validated());
 
-        return redirect()->route('series.index')
-            ->with('success', 'Serie created sucessfully');
+            return redirect()->route('series.index')
+                ->with('success', 'Serie created sucessfully');
 
-        // aqui se der erro, redireciona o usuario pra mesma pag de novo e exibe uma mensagem de erro amigavel //
-    } catch (Exception $exception) {
+            // aqui se der erro, redireciona o usuario pra mesma pag de novo e exibe uma mensagem de erro amigavel //
+        } catch (Exception $exception) {
             return back()->withErrors('Error creating series:' . $exception->getMessage());
         }
     }

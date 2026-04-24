@@ -11,11 +11,17 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            colors: {
+                'aurora-vibrant': '#8B32F4',
+                'aurora-deep': '#5320A6',
+                'aurora-light': '#F3F3F3',
+                'aurora-dark': '#0E0D0D',
+                fontFamily: {
+                    sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                },
             },
         },
-    },
 
-    plugins: [forms],
-};
+        plugins: [forms],
+    },
+}

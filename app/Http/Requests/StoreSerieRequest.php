@@ -24,7 +24,7 @@ class StoreSerieRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3', 'max:255'],
-            'description' => ['nullable|string'],
+            'description' => ['required', 'min:3'],
             'thumbnail' => ['nullable', 'string'],
         ];
     }

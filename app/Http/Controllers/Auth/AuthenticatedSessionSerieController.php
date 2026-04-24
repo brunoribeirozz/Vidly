@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\SerieController;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthenticatedSessionSerieController extends SerieController
+class AuthenticatedSessionSerieController extends Controller
 {
     /**
      * Display the login view.
@@ -28,7 +28,7 @@ class AuthenticatedSessionSerieController extends SerieController
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('series.index', absolute: false));
     }
 
     /**
