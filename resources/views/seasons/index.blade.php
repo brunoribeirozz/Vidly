@@ -1,12 +1,15 @@
 <x-app-layout>
+
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-bold text-xl text-aurora-vibrant leading-tight">
-                Seasons of {{ $serie->name }}
+                Seasons of {{ $series->name }}
             </h2>
 
-            <form action="{{ route('seasons.store', $serie) }}" method="POST">
-                @csrf
+            {{-- Tente trocar de $serie para ['series' => $serie->id] --}}
+            <form action="{{ route('series.seasons.store', ['series' => $series->id]) }}" method="POST">
+
+            @csrf
                 <button type="submit" class="bg-aurora-deep hover:bg-aurora-vibrant text-white px-4 py-2 rounded shadow-lg font-bold uppercase text-xs transition">
                     + Add Season
                 </button>
@@ -17,16 +20,9 @@
     <div class="py-12 bg-aurora-light min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            {{-- Mensagem de Sucesso (Boas Práticas) --}}
-            @if(session('message.success'))
-                <div class="mb-6 p-4 bg-green-900/20 border border-green-500/50 text-green-400 rounded-lg">
-                    {{ session('message.success') }}
-                </div>
-            @endif
-
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 @forelse ($seasons as $season)
-                    <div class="bg-aurora-card p-6 rounded-xl border border-white/5 shadow-xl group hover:border-aurora-vibrant transition duration-300">
+                    <div class="bg-aurora-card p-6 rounded-xl border border-black/5 shadow-xl group hover:border-aurora-vibrant transition duration-300">
                         <div class="flex flex-col items-center text-center">
                             <span class="text-4xl font-black text-aurora-vibrant mb-2">
                                 {{ $season->number }}
@@ -36,7 +32,7 @@
                             </h3>
 
                             {{-- Link para os episódios (Próximo passo) --}}
-                            <a href="#" class="mt-6 text-xs font-bold text-white/30 group-hover:text-aurora-dark transition uppercase">
+                            <a href="{{ route('seasons.episodes.index', $season) }}" class="mt-6 text-xs font-bold text-white/30 group-hover:text-aurora-dark transition uppercase">
                                 Show episodes →
                             </a>
                         </div>

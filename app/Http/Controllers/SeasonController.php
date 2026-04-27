@@ -7,17 +7,16 @@ use Illuminate\Http\RedirectResponse;
 
 class SeasonController extends Controller
 {
-    public function index(Serie $serie)
+    public function index(Serie $series)
     {
-        $seasons = $serie->seasons()->orderBy('number')->get();
-
-        return view('seasons.index', compact('serie', 'seasons'));
+        $seasons = $series->seasons()->orderBy('number')->get();
+        return view('seasons.index', compact('series', 'seasons'));
     }
-    public function store(Serie $serie): RedirectResponse
+    public function store(Serie $series): RedirectResponse
     {
-        $nextNumber = $serie->seasons()->max('number') + 1 ?? 1;
+        $nextNumber = ($series->seasons()->max('number') ?? 0) + 1;
 
-        $serie->seasons()->create([
+        $series->seasons()->create([
             'number' => $nextNumber
         ]);
 

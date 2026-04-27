@@ -26,10 +26,12 @@ class AuthenticatedSessionSerieController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        $firstName = explode(' ', auth()->user()->name)[0];
 
-        return redirect()->intended(route('series.index', absolute: false));
+        return redirect()->intended(route('Home', absolute: false))
+            ->with('message.success', "Olá, {$firstName}! Que bom ter você de volta à Vidly. 🎬");
     }
+
 
     /**
      * Destroy an authenticated session.

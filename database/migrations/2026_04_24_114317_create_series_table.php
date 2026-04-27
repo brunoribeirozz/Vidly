@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('thumbnail')->nullable();
+            $table->text('description')->nullable();
+            $table->text('thumbnail')->nullable();
             $table->timestamps();
         });
     }

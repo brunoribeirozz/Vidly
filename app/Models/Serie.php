@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @mixin Builder
+ * @property mixed $name
  */
 class Serie extends Model
 {
     // define os campos que vão ser preenchido com dados, antes passando pela validação do formRequest //
-    protected $fillable = ['name', 'thumbnail', 'descripition'];
+    protected $fillable = ['name', 'thumbnail', 'description'];
 
     // aqui é definidd que uma serie tem varias(hasMany) temporadas(seasons) //
     public function seasons() : HasMany

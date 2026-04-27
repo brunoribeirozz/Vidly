@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSerieRequest;
+use App\Http\Requests\UpdateSerieRequest;
 use App\Models\Serie;
+use DB;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -12,7 +14,10 @@ class SerieController extends Controller
 {
     public function index()
     {
-        $series = Serie::orderBy('name')->get();
+        $series = Serie::withCount(['seasons as episodes_count' => function ($query) {
+            $query->join('episodes', 'seasons.id', '=', 'episodes.season_id')
+                ->select(DB::raw('count(episodes.id)'));
+        }])->orderBy('name')->get();
 
         return view('series.index', compact('series'));
     }
@@ -47,5 +52,18 @@ class SerieController extends Controller
         } catch (Exception) {
             return back()->withErrors('Error deleting series:');
         }
+    }
+
+    public function update(UpdateSerieRequest $request, Serie $series)
+    {
+        $series->update($request->validated());
+
+        return redirect()->route('series.index')
+            ->with('message.success', 'Serie updated sucessfully');
+    }
+
+    public function edit(Serie $series)
+    {
+        return view('series.edit', compact('series'));
     }
 }

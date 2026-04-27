@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Season extends Model
 {
     // define que assim que uma temporada é criada, o usuario passa o numero dela, junto ao id de quel serie ela pertence //
-    protected $fillable = ['number', 'serie_id'];
+    protected $fillable = ['number', 'serie_id', 'title', 'duration'];
 
     // aqui define que uma season pertence a uma serie (belongsTo) //
     public function serie(): BelongsTo
@@ -24,6 +24,6 @@ class Season extends Model
     // define que uma season tem varios episodios (hasMany) //
     public function episodes(): HasMany
     {
-        return $this->hasMany(Serie::class);
+        return $this->hasMany(Episode::class);
     }
 }

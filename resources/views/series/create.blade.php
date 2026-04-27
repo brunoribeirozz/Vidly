@@ -7,9 +7,9 @@
 
 <div class="py-12 bg-aurora-light min-h-screen">
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-aurora-card overflow-hidden shadow-2xl sm:rounded-xl p-8 border border-white/5">
+        <div class="bg-aurora-card overflow-hidden shadow-2xl sm:rounded-xl p-8 border border-gray/90">
 
-            {{-- Mensagens de Erro (Requisito: Boas Práticas) --}}
+            {{-- Mensagens de Erro --}}
             @if ($errors->any())
                 <div class="mb-6 p-4 bg-red-900/20 border border-red-500/50 text-red-400 rounded-lg text-sm">
                     <ul class="list-disc list-inside">

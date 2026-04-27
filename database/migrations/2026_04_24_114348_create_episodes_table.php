@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->integer('number');
+            $table->string('title');
+            $table->string('duration')->nullable();
+
+            $table->foreignId('season_id');
+
             $table->timestamps();
         });
     }

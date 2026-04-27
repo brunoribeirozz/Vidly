@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @mixin Builder
  */
-class Episodes extends Model
+class Episode extends Model
 {
 
     protected $fillable = ['title', 'number', 'duration', 'season_id'];
