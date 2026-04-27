@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('series.index') }}">
-                        <x-application-logo class="block h-9 w-auto text-aurora-vibrant fill-current" />
+                        <x-application-logo class="block h-9 w-auto text-aurora-light fill-current" />
                     </a>
                 </div>
 

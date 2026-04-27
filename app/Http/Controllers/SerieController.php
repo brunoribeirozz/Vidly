@@ -37,13 +37,13 @@ class SerieController extends Controller
         }
     }
 
-    public function destroy(Serie $serie)
+    public function destroy(Serie $series)
     {
         try {
-            $serie->delete();
+            $series->delete();
 
             return redirect()->route('series.index')
-                ->with('message.success', "Serie $serie->name deleted sucessfully");
+                ->with('message.success', "Serie $series->name deleted sucessfully");
         } catch (Exception) {
             return back()->withErrors('Error deleting series:');
         }
