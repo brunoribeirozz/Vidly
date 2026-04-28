@@ -29,7 +29,7 @@ class AuthenticatedSessionSerieController extends Controller
         $firstName = explode(' ', auth()->user()->name)[0];
 
         return redirect()->intended(route('Home', absolute: false))
-            ->with('message.success', "Olá, {$firstName}! Que bom ter você de volta à Vidly. 🎬");
+            ->with('message.success', "Hello, {$firstName}! So good to see you again in Vidly! 🎬");
     }
 
 

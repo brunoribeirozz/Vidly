@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Episode;
 use App\Models\Season;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class EpisodeController extends Controller
 {
@@ -18,6 +20,7 @@ class EpisodeController extends Controller
 
     public function store(Season $season): RedirectResponse
     {
+        try {
         $nextNumber = ($season->episodes()->max('number') ?? 0) + 1;
 
         $season->episodes()->create([
@@ -28,20 +31,11 @@ class EpisodeController extends Controller
 
         return back()->with('message.success', "Episode $nextNumber has been created.");
 
-    }
-
-    public function delete(Episode $episode): RedirectResponse
-    {
-        try {
-            $episode->delete();
-
-            return back()->with('message.success', "Episode has been deleted.");
-
-        } catch (\Exception $e) {
-
-            return back()->withErrors('Error deleting episode' . $e->getMessage());
-
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage());
+            return back()->withErrors('message.error', "An error occured while creating the episode.");
         }
+
     }
 
     public function edit(Season $season, Episode $episode)
@@ -61,7 +55,7 @@ class EpisodeController extends Controller
 
             return redirect()->route('seasons.episodes.index', $season)
                 ->with('message.success', 'Episode has been updated.');
-        } catch (\Exception $e) {
+        } catch (Exception) {
             return back()->withErrors('Error updating episode.');
         }
     }
@@ -72,8 +66,8 @@ class EpisodeController extends Controller
             $episode->delete();
 
             return redirect()->route('seasons.episodes.index', $season)
-                ->with('message.success', 'Episode has been deleted.' . $episode->number . 'removed!');
-        } catch (\Exception $e) {
+                ->with('message.success', "Episode $episode->number has been deleted.");
+        } catch (Exception) {
             return back()->withErrors('Error:Could not remove the episode');
         }
     }

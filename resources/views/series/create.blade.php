@@ -21,7 +21,7 @@
             @endif
 
             <form action="{{ route('series.store') }}" method="POST">
-                @csrf {{-- Proteção obrigatória --}}
+                @csrf
 
                 <div class="space-y-6">
                     {{-- Name --}}

@@ -1,5 +1,13 @@
-<svg {{ $attributes }} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-    <!-- Triângulo arredondado (Aumentado e responsivo a cores) -->
+{{-- resources/views/components/application-logo.blade.php --}}
+<svg {{ $attributes }} viewBox="0 0 256 256" xmlns="http://w3.org">
+    <defs>
+        <mask id="maskV">
+            <rect width="100%" height="100%" fill="white" />
+            <path d="M70 88 L112 188 L154 88 L136 88 L112 146 L88 88 Z" fill="black" />
+        </mask>
+    </defs>
+
+
     <path d="
         M44 12
         Q28 12 28 28
@@ -10,16 +18,6 @@
         Q244 120 228 112
         L44 12
         Z"
-          fill="currentColor"/>
-
-    <!-- V mais aberto (Centralizado e na cor de fundo para efeito de recorte) -->
-    <path d="
-        M70 88
-        L112 188
-        L154 88
-        L136 88
-        L112 146
-        L88 88
-        Z"
-          fill="#0E0D0D"/> {{-- Use a cor do seu fundo aqui para o 'recorte' --}}
+          fill="currentColor"
+          mask="url(#maskV)"/>
 </svg>

@@ -31,7 +31,7 @@
                         <div class="flex items-center space-x-4">
                             {{-- Nome do Usuário --}}
                             <div class="text-sm font-medium text-aurora-light bg-black/20 px-3 py-2 rounded-md">
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->name ?? 'Guest'}}
                             </div>
 
                             {{-- Botão Logout --}}
@@ -84,8 +84,8 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name ?? 'Guest' }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email ?? 'Guest'}}</div>
             </div>
 
             <div class="mt-3 space-y-1">

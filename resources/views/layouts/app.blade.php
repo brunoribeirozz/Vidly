@@ -20,6 +20,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}?v={{ time() }}">
 
 
 </head>
@@ -49,13 +50,13 @@
             </div>
         </div>
 
-        {{-- Script nativo que funciona independente de Alpine ou Vite --}}
+    <!-- Script nativo, não usa o Vite ou Alpine -->
         <script>
             setTimeout(function() {
                 const msg = document.getElementById('welcome-message');
                 if (msg) {
                     msg.style.opacity = '0';
-                    setTimeout(() => msg.remove(), 500); // Remove do HTML após o fade
+                    setTimeout(() => msg.remove(), 500);
                 }
             }, 4000); // 4 segundos
         </script>
