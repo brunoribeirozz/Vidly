@@ -28,7 +28,7 @@
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-aurora-vibrant shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
         </div>
@@ -41,7 +41,7 @@
             @endif
 
                 {{-- Link com estilo de botão --}}
-                <a href="{{ route('register') }}" class="inline-flex items-center px-2 py-2 ms-3 rounded-md font-semibold text-xs text-aurora-dark uppercase tracking-widest transition ease-in-out duration-150">
+                <a href="{{ route('register') }}" class="inline-flex items-center px-2 py-2 ms-3 rounded-md font-bold text-[12px] text-aurora-dark uppercase tracking-widest transition ease-in-out duration-150">
                     {{ __('Register') }}
                 </a>
 

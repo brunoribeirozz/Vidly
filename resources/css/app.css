@@ -9,4 +9,7 @@
     --color-aurora-card: #18181B;
 }
 
+[x-cloak] { display: none !important; }
+
+
 

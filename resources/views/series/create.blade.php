@@ -7,11 +7,11 @@
 
 <div class="py-12 bg-aurora-light min-h-screen">
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-aurora-card overflow-hidden shadow-2xl sm:rounded-xl p-8 border border-gray/90">
+        <div class="bg-aurora-card overflow-hidden shadow-gray-500 shadow-2xl sm:rounded-xl p-8 border border-gray/90">
 
             {{-- Mensagens de Erro --}}
             @if ($errors->any())
-                <div class="mb-6 p-4 bg-red-900/20 border border-red-500/50 text-red-400 rounded-lg text-sm">
+                <div class="mb-6 p-4 bg-aurora-deep/20 border border-aurora-vibrant/50 text-aurora-vibrant rounded-lg text-sm">
                     <ul class="list-disc list-inside">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -50,11 +50,11 @@
                 </div>
 
                 <div class="mt-10 flex items-center justify-end space-x-6">
-                    <a href="{{ route('series.index') }}" class="text-sm font-medium text-white/40 hover:text-aurora-light transition">
+                    <a href="{{ route('series.index') }}" class="text-[16px] font-bold text-aurora-dark hover:text-aurora-deep transition">
                         Cancel
                     </a>
                     <button type="submit"
-                            class="inline-flex justify-center rounded-md bg-aurora-vibrant py-2.5 px-8 text-sm font-bold text-white shadow-[0_0_20px_rgba(139,50,244,0.4)] hover:bg-aurora-deep focus:outline-none focus:ring-2 focus:ring-aurora-vibrant transition-all">
+                            class="inline-flex justify-center rounded-md bg-aurora-deep py-2.5 px-8 text-sm font-bold text-white shadow-[0_0_20px_rgba(139,50,244,0.4)] hover:bg-aurora-vibrant focus:outline-none focus:ring-2 focus:ring-aurora-vibrant transition-all">
                         Save Series
                     </button>
                 </div>

@@ -19,16 +19,26 @@ class SerieController extends Controller
         // inicie a query //
         $query = Serie::query();
 
+        // diz que ao laravel que a request é uma busca //
         if ($request->has('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        $series = $query->withCount(['seasons as episodes_count' => function ($query) {
+        // contagem dos eps e seasons //
+        $series = $query->withCount(['seasons', 'seasons as episodes_count' => function ($query) {
             $query->join('episodes', 'seasons.id', '=', 'episodes.season_id')
                 ->select(DB::raw('count(episodes.id)'));
-        }])->orderBy('name')->get();
+        },
+            'reviews as reviews_count'
+        ])
+            ->withAvg('reviews', 'stars')
+            ->orderBy('reviews_avg_stars', 'desc')
+            ->orderBy('name')
+            ->get();
 
-        return view('series.index', compact('series'));
+        $messageSuccess = $request->session()->get('message.success');
+
+        return view('series.index', compact('series', 'messageSuccess'));
     }
 
     public function create()

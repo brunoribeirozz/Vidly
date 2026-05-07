@@ -14,20 +14,20 @@
                        placeholder="Search for a series..."
                        class="w-full bg-aurora-light border border-gray-300 text-aurora-dark text-sm rounded-xl py-2 pl-10 pr-4 focus:border-aurora-vibrant focus:ring-1 focus:ring-aurora-vibrant transition-all placeholder-gray-600 shadow-sm hover:shadow-gray-400 duration-300 group">
 
-                {{-- Ícone de Lupa --}}
                 <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-aurora-deep">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
             </form>
+
         </div>
     </x-slot>
 
     <div class="py-12 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="shadow-gray-400 shadow-2xl  overflow-hidden sm:rounded-2xl">
+            <div class="shadow-gray-500 shadow-2xl  overflow-hidden sm:rounded-2xl mt-10">
 
                 <div class="max-h-[650px] overflow-y-auto custom-scrollbar p-6">
                     <div class="text-aurora-light">
@@ -38,24 +38,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #8B32F4; {{-- Sua cor aurora-vibrant --}}
-        border-radius: 10px;
-            border: 2px solid transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #7026c9;
-        }
-    </style>
-
-
 </x-app-layout>

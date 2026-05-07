@@ -4,6 +4,8 @@
             <h2 class="font-bold text-xl text-aurora-vibrant leading-tight">
                 Episodes: Season {{ $season->number }}
             </h2>
+
+            @if(auth()->user()->is_admin)
             <form action="{{ route('seasons.episodes.store', $season) }}" method="POST">
                 @csrf
                 <button type="submit"
@@ -11,6 +13,7 @@
                     + Add Episode
                 </button>
             </form>
+            @endif
         </div>
     </x-slot>
 
@@ -28,7 +31,7 @@
                             </div>
 
                             <div class="flex items-center space-x-6">
-
+                                @if(auth()->user()->is_admin)
                                 <form action="{{ route('seasons.episodes.destroy', [$season, $episode]) }}" method="POST" class="m-0 flex items-center">
                                     @csrf
                                     @method('DELETE')
@@ -44,6 +47,19 @@
                                         Remove
                                     </button>
                                 </form>
+                                @endif
+
+                                <form action="{{ route('episodes.watched', $episode) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                            title="Mark as watched"
+                                            class="transition-all duration-300 {{ auth()->user()->watchedEpisodes->contains($episode->id) ? 'text-aurora-vibrant' : 'text-gray-600 opacity-30 hover:opacity-100' }}">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+
 
                                 <span class="bg-black/40 text-white px-2 py-1 rounded text-xs font-mono">
                                     {{ $episode->duration ?? '--:--' }}

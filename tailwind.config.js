@@ -16,12 +16,28 @@ export default {
                 'aurora-deep': '#5320A6',
                 'aurora-light': '#F3F3F3',
                 'aurora-dark': '#0E0D0D',
-                fontFamily: {
-                    sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                },
+            },
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+            // --- fundo animado --- //
+            animation: {
+                'gradient-x': 'gradient-x 15s ease infinite',
+            },
+            keyframes: {
+                'gradient-x': {
+                    '0%, 100%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'left center'
+                    },
+                    '50%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'right center'
+                    }
+                }
             },
         },
-
-        plugins: [forms],
     },
+
+    plugins: [forms],
 }

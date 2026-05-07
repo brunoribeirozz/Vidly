@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @mixin Builder
@@ -18,5 +19,10 @@ class Episode extends Model
         public function season() : BelongsTo
         {
             return $this->belongsTo(Season::class);
+        }
+
+        public function users()
+        {
+            return $this->belongsToMany(User::class, 'episode_user');
         }
 }

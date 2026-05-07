@@ -53,7 +53,7 @@ class EpisodeController extends Controller
         try {
             $episode->update($data);
 
-            return redirect()->route('seasons.episodes.index', $season)
+            return to_route('seasons.episodes.index', $season)
                 ->with('message.success', 'Episode has been updated.');
         } catch (Exception) {
             return back()->withErrors('Error updating episode.');
@@ -65,10 +65,17 @@ class EpisodeController extends Controller
         try {
             $episode->delete();
 
-            return redirect()->route('seasons.episodes.index', $season)
+            return to_route('seasons.episodes.index', $season)
                 ->with('message.success', "Episode $episode->number has been deleted.");
         } catch (Exception) {
             return back()->withErrors('Error:Could not remove the episode');
         }
+    }
+
+    public function toggleWatched(Episode $episode): RedirectResponse
+    {
+        auth()->user()->watchedEpisodes()->toggle($episode->id);
+
+        return back()->with('message.success', 'Status has been changed.');
     }
 }
