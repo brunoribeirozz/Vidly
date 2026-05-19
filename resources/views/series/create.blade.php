@@ -54,7 +54,7 @@
                         Cancel
                     </a>
                     <button type="submit"
-                            class="inline-flex justify-center rounded-md bg-aurora-deep py-2.5 px-8 text-sm font-bold text-white shadow-[0_0_20px_rgba(139,50,244,0.4)] hover:bg-aurora-vibrant focus:outline-none focus:ring-2 focus:ring-aurora-vibrant transition-all">
+                            class="inline-flex justify-center rounded-md bg-aurora-deep py-2.5 px-8 text-sm font-bold text-white shadow-[0_0_20px_rgba(139,50,244,0.4)] hover:bg-aurora-vibrant focus:outline-none focus:ring-2 focus:ring-aurora-vibrant transition-colors duration-300">
                         Save Series
                     </button>
                 </div>

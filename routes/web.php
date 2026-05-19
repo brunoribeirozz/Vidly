@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\ProfileSerieController;
 use App\Http\Controllers\ReviewController;
@@ -39,7 +40,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
     // rotas do adm //
     Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+        ->name('admin.dashboard');
     Route::resource('series', SerieController::class)->except(['index']);
     Route::resource('series.seasons', SeasonController::class)->except(['index']);
     Route::resource('seasons.episodes', EpisodeController::class)->except(['index']);

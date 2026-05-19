@@ -44,7 +44,7 @@
                         <a href="{{ route('series.index') }}" class="text-[16px] font-bold text-aurora-dark hover:text-aurora-deep transition">
                             Cancel
                         </a>
-                        <x-primary-button class="bg-aurora-deep hover:bg-aurora-vibrant">
+                        <x-primary-button class="bg-aurora-deep hover:bg-aurora-vibrant transition-colors duration-300">
                             {{ __('Update Series') }}
                         </x-primary-button>
                     </div>

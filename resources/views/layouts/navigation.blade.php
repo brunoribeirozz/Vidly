@@ -12,15 +12,22 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('series.index')" :active="request()->routeIs('series.index')"
-                                class="text-white font-black uppercase tracking-widest hover:text-white/70 transition">
+                                class="text-white font-black uppercase tracking-widest hover:text-white/70 transition-colors duration-500">
                         {{ __('Series') }}
                     </x-nav-link>
 
                     {{-- só o adm pode ver esse botão --}}
                     @if(auth()->user()->is_admin)
                         <x-nav-link :href="route('series.create')" :active="request()->routeIs('series.create')"
-                                    class="text-white font-black uppercase tracking-widest hover:text-white/70 transition">
+                                    class="text-white font-black uppercase tracking-widest hover:text-white/70 transition-colors duration-500">
                             {{ __('Add') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if(auth()->user()->is_admin)
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')"
+                                    class="text-white font-black uppercase tracking-widest hover:text-white/70 transition-colors duration-500">
+                            {{ __('Dashboard') }}
                         </x-nav-link>
                     @endif
                 </div>
